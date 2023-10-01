@@ -1,3 +1,2 @@
 .env
-scrapetest.py
-apicalltests.js
+/node_modules
