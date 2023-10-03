@@ -17,29 +17,35 @@ const authKey = token;
 
 // USAJOBS API CALL TESTS
 
-// request(
-//   {
-//     url: "https://data.usajobs.gov/api/search?JobCategoryCode=2210&Keyword=Software Development&LocationName=Washington, DC",
-//     method: "GET",
-//     headers: {
-//       Host: host,
-//       "User-Agent": userAgent,
-//       "Authorization-Key": authKey,
-//     },
-//   },
-//   function (error, response, body) {
-//     let data = JSON.parse(body);
-//     console.log(
-//       data.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionURI
-//     );
-//     for (let i = 0; i < 10; i++) {
-//       console.log(
-//         data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
-//           .PositionURI
-//       );
-//     }
-//   }
-// );
+request(
+  {
+    url: "https://data.usajobs.gov/api/search?JobCategoryCode=2210",
+    //&Keyword=Software Development&LocationName=Washington, DC tack this on at the end to get swe
+    method: "GET",
+    headers: {
+      Host: host,
+      "User-Agent": userAgent,
+      "Authorization-Key": authKey,
+    },
+  },
+  function (error, response, body) {
+    let data = JSON.parse(body);
+    // console.log(
+    //   data.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionURI
+    // );
+    for (let i = 0; i < 10; i++) {
+      console.log(
+        data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
+          .PositionURI
+      );
+      fs.appendFile('USA_JOBS.json', JSON.stringify(data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
+        .PositionURI), (error) => {
+          if (error) throw error;
+        });
+        // you're getting somewhere with this. just need to format it properly.
+    }
+  }
+);
 
 // JOOBLE API CALL TESTS
 
@@ -65,14 +71,14 @@ http.onreadystatechange = function () {
     //the results i'm looking for
     //i think i need to use JSON.parse
     // }
-    console.log(JSON.parse(http.responseText));
+    console.log(JSON.parse(http.responseText[0]));
     // ??? ???????
     // data = JSON.parse(http.responseText);
   }
 };
-//Send request to the server
+// Send request to the server
 // http.send(jooble_params);
 
 
-let obj = {"totalCount": 1, "jobs": ["foo"]}
-console.log(obj.jobs[0])
+// let obj = {"totalCount": 1, "jobs": ["foo"]}
+// console.log(obj.jobs[0])
