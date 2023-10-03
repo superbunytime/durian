@@ -30,19 +30,16 @@ request(
   },
   function (error, response, body) {
     let data = JSON.parse(body);
-    // console.log(
-    //   data.SearchResult.SearchResultItems[0].MatchedObjectDescriptor.PositionURI
-    // );
-    for (let i = 0; i < 10; i++) {
-      console.log(
-        data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
-          .PositionURI
-      );
-      fs.appendFile('USA_JOBS.json', JSON.stringify(data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
-        .PositionURI), (error) => {
+
+    for (let i = 0; i < 1; i++) {
+      // console.log(
+      //   data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
+      //     .PositionURI
+      // );
+      //this console logs just the uri of 10 job posts
+      fs.writeFile('USA_JOBS.json', JSON.stringify(data.SearchResult.SearchResultItems[i]), (error) => {
           if (error) throw error;
         });
-        // you're getting somewhere with this. just need to format it properly.
     }
   }
 );
@@ -64,21 +61,14 @@ http.setRequestHeader("Content-type", "application/json");
 //Callback when the state changes
 http.onreadystatechange = function () {
   if (http.readyState == 4 && http.status == 200) {
-    // console.log(http.responseText);
-    // for (let i = 0; i < 10; i++){
-    //   console.log(JSON.parse(http.responseText))
-    //spelling the variable 'responsText' isn't going to give me
-    //the results i'm looking for
-    //i think i need to use JSON.parse
-    // }
-    console.log(JSON.parse(http.responseText[0]));
-    // ??? ???????
-    // data = JSON.parse(http.responseText);
+
+    // console.log(JSON.parse(http.responseText));
+    fs.writeFile('JOOBLE.json', JSON.stringify(http.responseText), (error) => {
+      if (error) throw error;
+    });
+
   }
 };
 // Send request to the server
-// http.send(jooble_params);
+http.send(jooble_params);
 
-
-// let obj = {"totalCount": 1, "jobs": ["foo"]}
-// console.log(obj.jobs[0])
