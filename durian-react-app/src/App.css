@@ -8,6 +8,12 @@
   height: 40vmin;
 }
 
+.button {
+  color: #282c34;
+  background-color: #282c34;
+  visibility: hidden;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -30,4 +36,8 @@
   to {
     transform: scale(1.01)
   }
+}
+
+body {
+  background-color: #282c34;
 }
