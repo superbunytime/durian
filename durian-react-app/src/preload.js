@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./duriantransparent.png";
 import "./App.css";
 
-function preload() {
+function Preload() {
   return (
     <div className="App">
       <header
