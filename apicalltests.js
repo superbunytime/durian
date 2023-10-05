@@ -30,14 +30,22 @@ request(
   },
   function (error, response, body) {
     let data = JSON.parse(body);
+    // console.log(data.SearchResult.SearchResultItems[0])
 
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 5; i++) {
       // console.log(
       //   data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor
       //     .PositionURI
       // );
       //this console logs just the uri of 10 job posts
-      fs.writeFile('USA_JOBS.json', JSON.stringify(data.SearchResult.SearchResultItems[i]), (error) => {
+
+      // instead of logging all the links directly to the json file and causing obnoxious errors
+      // let's make an object, have it put the title, link, and description in the object,
+      // and then write that object to the file.
+      const dArr = []
+      dArr.push(data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor.PositionURI,
+        data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor.PositionTitle)
+      fs.appendFile('USA_JOBS.json', JSON.stringify(dArr), (error) => {
           if (error) throw error;
         });
     }
@@ -62,7 +70,7 @@ http.setRequestHeader("Content-type", "application/json");
 http.onreadystatechange = function () {
   if (http.readyState == 4 && http.status == 200) {
 
-    // console.log(JSON.parse(http.responseText));
+    console.log(JSON.parse(http.responseText));
     fs.writeFile('JOOBLE.json', JSON.stringify(http.responseText), (error) => {
       if (error) throw error;
     });
