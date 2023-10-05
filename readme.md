@@ -23,6 +23,18 @@ e. Walk someone through the standard user flow for the website
 
 User visits site; user enjoys the dark theme. User searches for a job based on location or key word. Optionally, user creates an account to save jobs or favorite companies.
 
-API information:
+f. API information:
 
 This project uses the <a href="https://developer.usajobs.gov/">USA Jobs API</a> as well as the <a href= "https://jooble.org/api/about?ref=apilist.fun">Jooble API</a>
+
+g. Identify the technology stack used to create your website
+
+Durian uses a PERN stack (postgres, express, react, node)
+
+h. Include anything else that you feel is important to share
+
+While initially I was excited to add as many APIs as possible to the project, I quickly came to learn just how many job search APIs are either defunct, enterprise/employer facing, or exorbitantly paywalled away from being utilized in a useful way.
+
+Though this was discouraging, I still managed to find a couple of APIs that value user experience over profit.
+
+Also, the durian on the splash page is from Legend of Zelda, Breath of the Wild.
