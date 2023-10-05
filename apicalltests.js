@@ -40,7 +40,7 @@ request(
       //this console logs just the uri of 10 job posts
 
       // instead of logging all the links directly to the json file and causing obnoxious errors
-      // let's make an object, have it put the title, link, and description in the object,
+      // let's make an object, have it put the title, link, in the object,
       // and then write that object to the file.
       const dArr = []
       dArr.push(data.SearchResult.SearchResultItems[i].MatchedObjectDescriptor.PositionURI,
