@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ButtonClick from "./ButtonClick.js";
 
 function SearchForm() {
   const [formData, setFormData] = useState({
@@ -50,7 +51,8 @@ function SearchForm() {
         />
       </div>
     </form>
-    <button id = "searchButton" onClick={this.gatherInput}>Search</button>
+    <ButtonClick/>
+    
   </div>
 );
  // line 52, the search button makes it crash because that's not been properly implemented.
