@@ -52,7 +52,6 @@ function SearchForm() {
       </div>
     </form>
     <ButtonClick/>
-    
   </div>
 );
  // line 52, the search button makes it crash because that's not been properly implemented.

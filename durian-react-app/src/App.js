@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./duriantransparent.png";
 import "./App.css";
 import SearchForm from "./SearchForm.js";
-
+import RenderSearch from "./RenderSearch.js";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         </p>
       </header>
       <SearchForm/>
+      <RenderSearch/>
     </div>
   );
 }
